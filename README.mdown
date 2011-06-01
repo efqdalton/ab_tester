@@ -1,0 +1,64 @@
+# ABTester
+
+A stupid simple gem that helps to do very simple AB Tests with Rails 3 pages and emails.
+
+## Install
+
+Criando um projeto do zero:
+
+    gem install ab_tester
+
+## Usage
+
+On controller or mailer
+
+    class SomeController < ApplicationController
+      ab_tester 'choice_a' => 3, 'choice_b' => 2, 'choice_c' => 6
+
+      protected
+      def identity_hash
+        # Some way to identity uniquely a user, put something on session, cookie, or simple use some data from somewhere
+        current_user.id
+      end
+    end
+
+On view:
+
+    <p>Choice selected:</p>
+    <% ab_choice 'choice_a' %>
+      Choice A
+    <% end %>
+    <% ab_choice 'choice_a' %>
+      Choice B
+    <% end %>
+    <% ab_choice 'choice_a' %>
+      Choice C
+    <% end %>
+
+It's possible to get data on controller using choices:
+
+    def index
+      ab_choice 'all_data' do
+        @users = User.all
+      end
+
+      ab_choice 'some_users' do
+        @users = User.page(params[:page])
+      end
+    end
+
+## Statistics
+
+    rake ab_tester:stats
+
+## Reseting Stats
+
+    rake ab_tester:reset
+
+## Dumping Data
+
+    rake ab_tester:dump
+
+## TODO
+
+* Tests, shame on me!
