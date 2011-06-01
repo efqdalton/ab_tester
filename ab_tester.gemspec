@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.authors = ["Dalton Pinto"]
   s.date = %q{2011-06-01}
   s.description = %q{Yet another AB Test gem, but this supports AbstractController, not only ActionController}
-  s.email = %q{efqdalton@gmail.com}
+  s.email = %q{dalthon@aluno.ita.br}
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.mdown"
